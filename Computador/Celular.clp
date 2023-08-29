@@ -5,7 +5,9 @@
 (defrule inicio
 =>
 (printout t "¡Bienvenido!" crlf)
-(printout t "Este sistema te ayudará a conocer que modelo de celular seria mejor para ti" crlf)
+(printout t "¿Como Estas? *_*" crlf)
+(printout t "Este sistema te ayudará a conocer que modelo de celular seria mejor para ti segun ciertos factores" crlf)
+(printout t "---------------------------------------------------*-----------------------------------------*---------------------------" crlf)
 (printout t "Hecho por Alejandro y Victor" crlf)
 (printout t "Por favor responder 1 para un Si y 0 para No" crlf crlf)
 
@@ -19,7 +21,7 @@
 (bind ?fotografias (read))
 (assert (photo ?fotografias)) 
 
-(printout t "Necesitas el celular con bastante almacenamiento interno" crlf)
+(printout t "Necesitas el celular con bastante almacenamiento interno?" crlf)
 (bind ?memoria(read))
 (assert (memo ?memoria)) 
 
@@ -68,7 +70,7 @@ else (printout t "Se recomienda un SSD" crlf)))
 (defrule muestra-CPU
     (cpu_valor ?cpuJ ?cpuF ?cpuM ?cpuC ?cpuA ?cpuI ?cpuB )
     =>
-    (printout t "El consumo que tendría de cpu es del " (CPU ?cpuJ ?cpuF ?cpuM ?cpuC ?cpuA ?cpuI ?cpuB) "%" crlf))
+    (printout t "El consumo minimo que tendría el cpu es del " (CPU ?cpuJ ?cpuF ?cpuM ?cpuC ?cpuA ?cpuI ?cpuB) "%" crlf))
 
 (defrule muestra-memoria
     (memoria_valor ?MemJ ?MemF ?MemM ?MemC ?MemA ?MemI ?MemB)
@@ -85,15 +87,27 @@ else (printout t "Se recomienda un SSD" crlf)))
     =>
     (printout t "megapixeles de la camara son: " (camara ?camJ ?camF ?camM ?camC ?camA ?camI ?camB) " MP" crlf))
 
-(defrule recomendacion-android
+(defrule recomendacion-android1
   (andro 1)
+  (photo 1)
+  (memo 1)
+  (plays 1)
+  (bat 1)
+  (cargaR 1 )
+  (iphone 0)
   =>
   (printout t "Se recomienda un Huawei P60 Pro." crlf)
     
 )
 
-(defrule recomendacion-ios
+(defrule recomendacion-ios1
   (iphone 1)
+  (photo 1)
+  (memo 1)
+  (plays 1)
+  (bat 1)
+  (cargaR 1)
+  (andro 0)
   =>
   (printout t "Se recomienda un iPhone 14 Pro Max." crlf)
 )
@@ -102,6 +116,61 @@ else (printout t "Se recomienda un SSD" crlf)))
     (disco_valor ?discO ?discL ?discC ?discV)
     =>
     (disco ?discO ?discL ?discC ?discV) crlf)
+
+ (defrule recomendacion-android2
+  (andro 1)
+  (photo 1)
+  (cargaR 0) 
+  (iphone 0)
+  (memo 1)
+  (bat 1)
+  (plays 0)
+  =>
+  (printout t "Se recomienda un Google Pixel 7 Pro." crlf)
+)
+
+(defrule recomendacion-ios
+
+  (iphone 1)
+  (memo 0)
+  (cargaR 0)
+  (bat 0)
+  (plays 0)
+  (andro 0)
+  
+  =>
+  (printout t "Se recomienda un iPhone X Pro Max." crlf)
+)
+
+
+ (defrule recomendacion-android
+  (andro 1)
+  (photo 0)
+  (cargaR 0) 
+  (memo 0)
+  (iphone 0)
+  (bat 0)
+  (plays 0)
+
+
+  =>
+  (printout t "Se recomienda un Samsung Galaxy j2 Edge" crlf)
+)
+
+(defrule recomendacion-ios
+
+  (iphone 1)
+  (memo 0)
+  (cargaR 0)
+  (bat 0)
+  (plays 0)
+  (andro 0)
+  (photo 0)
+  
+  =>
+  (printout t "Se recomienda un iPhone 6" crlf)
+)
+
 
 ;;; Definir las reglas para las respuesta y asignar los hechos
 
@@ -118,7 +187,7 @@ else (printout t "Se recomienda un SSD" crlf)))
 =>
 (if (eq ?juegos 1) then
     (bind ?cpu1 50) (bind ?Mem1 512.000) (bind ?bate1 4715) (bind ?cam1 0)
-    else (bind ?cpu1 0) (bind ?Mem1 64.000) (bind ?bate1 2500) (bind ?cam10)
+    else (bind ?cpu1 0) (bind ?Mem1 64.000) (bind ?bate1 2500) (bind ?cam1 0)
 )
 (if (eq ?fotografias 1) then
     (bind ?cpu2 2) (bind ?Mem2 5.000) (bind ?bate2 0.1 ) (bind ?cam2 48)
