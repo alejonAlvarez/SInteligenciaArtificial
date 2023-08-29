@@ -60,11 +60,7 @@
 (?camJ ?camF ?camM ?camC ?camA ?camI ?camB)
 (+ ?camJ ?camF ?camM ?camC ?camA ?camI ?camB))
 
-(deffunction disco
-(?discO ?discL ?discC ?discV)
-(if (<= (+ ?discO ?discL ?discC ?discV) 2) then
-    (printout t "Se recomienda un disco mecánico" crlf)
-else (printout t "Se recomienda un SSD" crlf)))
+
 
 ;;; Definir regla para calcular valores de componentes
 (defrule muestra-CPU
@@ -112,10 +108,7 @@ else (printout t "Se recomienda un SSD" crlf)))
   (printout t "Se recomienda un iPhone 14 Pro Max." crlf)
 )
 
-(defrule muestra-disco
-    (disco_valor ?discO ?discL ?discC ?discV)
-    =>
-    (disco ?discO ?discL ?discC ?discV) crlf)
+
 
  (defrule recomendacion-android2
   (andro 1)
@@ -218,5 +211,5 @@ else (printout t "Se recomienda un SSD" crlf)))
 (assert (bater_valor ?bate1 ?bate2 ?bate3 ?bate4 ?bate5 ?bate6 ?bate7))
 (assert (camara_valor ?cam1 ?cam2 ?cam3 ?cam4 ?cam5 ?cam6 ?cam7))
 
-;;;(assert (disco_valor ?discO ?discL ?discC ?discV))
+
 )
