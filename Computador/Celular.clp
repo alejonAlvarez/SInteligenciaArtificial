@@ -29,13 +29,20 @@
 (bind ?carga (read))
 (assert (cargaR ?carga))
 
-(printout t "Necesitas que sea android?" crlf)
-(bind ?android (read))
-(assert (andro ?android))
+(printout t "Se Mostrara que Sistema Operativo necesitas android o IOS solo elige que Sistema Operativo Desea" crlf)
 
-(printout t "Necesitas que sea IOS?" crlf)
-(bind ?IOS (read))
-(assert (iphone ?IOS))
+(printout t "Necesitas que sea Android?" crlf)
+(bind ?android (read))
+
+(if (eq ?android 1)
+    then
+    (printout t "No necesitas iOS " crlf)
+    else
+    (printout t "Necesitas que sea iOS?" crlf)
+    (bind ?IOS (read))
+    (assert (iphone ?IOS))
+)
+
 
 (printout t "Necesitas que la bateria sea duradera?" crlf)
 (bind ?bateria (read))
