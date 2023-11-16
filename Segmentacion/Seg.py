@@ -1,9 +1,10 @@
 from ultralytics import YOLO
 import cv2
+#Alejandro Alvarez
 
 model = YOLO('yolov8m-seg.pt')
-#video_path = "vial.mp4"
-cap = cv2.VideoCapture(0)
+video_path = "Fruta.mp4"
+cap = cv2.VideoCapture(video_path)
 
 while cap.isOpened():
     success, frame = cap.read()
