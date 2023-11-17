@@ -115,11 +115,11 @@ with mp_hands.Hands(
                                 cv2.FONT_HERSHEY_SIMPLEX, 
                                 3.0, (0, 0, 255), 6)
                 
-                    """ elif middle_finger_pip[1] - middle_finger_tip[1] > 0 and \
-                   ring_finger_pip[1] - ring_finger_tip[1] < 0:
-                    cv2.putText(image, 'profe mi comapañero no aparece', (200, 150), 
+                elif middle_finger_pip[1] - middle_finger_tip[1] > 0 and \
+                     ring_finger_pip[1] - ring_finger_tip[1] < 0:
+                    cv2.putText(image, 'poli', (200, 150), 
                         cv2.FONT_HERSHEY_SIMPLEX, 
-                        1.0, (0, 0, 255), 6) """
+                        1.0, (0, 0, 255), 6) 
 
                 elif thumb_pip[1] - thumb_tip[1] > 0 and \
                 index_finger_pip[1] - index_finger_tip[1] < 0 and \
